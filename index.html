@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>GradientIQ - Student Performance Prediction</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">GradientIQ</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Predict</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="bg"></div> <!-- Background Image Section -->
+    
+    <div class="main-container">
+        <!-- Form Section -->
+        <div class="form-container">
+            <h1>Predict CGPA & Grade</h1>
+            <form method="post">
+                <!-- Form Inputs -->
+                <label for="age">Age:</label>
+                <input type="number" name="age" required>
+
+                <label for="gender">Gender (0 for Female, 1 for Male):</label>
+                <input type="number" name="gender" required>
+
+                <label for="ethnicity">Ethnicity (0 to 3):</label>
+                <input type="number" name="ethnicity" required>
+
+                <label for="parental_education">Parental Education (0 to 4):</label>
+                <input type="number" name="parental_education" required>
+
+                <label for="study_time_weekly">Study Time Weekly (in hours):</label>
+                <input type="number" step="0.1" name="study_time_weekly" required>
+
+                <label for="absences">Absences:</label>
+                <input type="number" name="absences" required>
+
+                <label for="tutoring">Tutoring (0 for No, 1 for Yes):</label>
+                <input type="number" name="tutoring" required>
+
+                <label for="parental_support">Parental Support (0 to 4):</label>
+                <input type="number" name="parental_support" required>
+
+                <label for="extracurricular">Extracurricular (0 for No, 1 for Yes):</label>
+                <input type="number" name="extracurricular" required>
+
+                <label for="sports">Sports (0 for No, 1 for Yes):</label>
+                <input type="number" name="sports" required>
+
+                <button type="submit">Predict</button>
+            </form>
+
+            <!-- Display Results -->
+            {% if predicted_cgpa is not none %}
+                <div class="result">
+                    <h2>Predicted CGPA: {{ predicted_cgpa }}</h2>
+                    <h2>Predicted Grade: {{ predicted_grade }}</h2>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Right Side Section -->
+        <div class="right-container">
+            <h2>Student Performance Prediction</h2>
+            <img src="{{ url_for('static', filename='student-happy.jpg') }}" alt="Happy Student">
+        </div>
+    </div>
+
+</body>
+
+</html>
